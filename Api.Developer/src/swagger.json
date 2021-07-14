@@ -1,0 +1,187 @@
+{
+   "openapi": "3.0.0",
+   "info": {
+      "title": "API CRUD de desenvolvedores",
+      "description": "API desenvolvida para cumprir os requisitos necessários da prova técnica da Gazin Tech.",
+      "contact": {
+         "email": "meu email",
+         "github": "meu github",
+         "linkedin": "meu linkedin"
+      },
+      "version": "1.0.0"
+   },
+   "paths": {
+      "/developers": {
+         "post": {
+            "summary": "Cadastro de desenvolvedor",
+            "description": "Rota responsavel por cadastrar um novo desenvolvedor",
+            "tags": ["Developer"],
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "$ref": "#/components/schemas/Developer"
+                     },
+                     "examples": {
+                        "developer": {
+                           "value": {
+                              "name": "Developer",
+                              "email": "email@email.com",
+                              "password": "123456789",
+                              "sex": "M",
+                              "hobby": "Gosto de codar nas horas vagas",
+                              "birthDate": "23/04/1998"
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "responses": {
+               "401": {
+                  "description": "Unauthorized"
+               },
+               "400": {
+                  "description": "Quatrocentos"
+               },
+               "200": {
+                  "description": "OK",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object",
+                           "$ref": "#/components/schemas/Developer"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/developers/{id}": {
+         "get": {
+            "summary": "Obter desenvolvedor pelo id",
+            "description": "Rota responsavel por obter um desenvolvedor pelo id",
+            "tags": ["Developer"],
+            "parameters": [
+               {
+                  "name": "id",
+                  "in": "path",
+                  "description": "Id do desenvolvedor para busca",
+                  "required": true
+               }
+            ],
+            "security": [{"bearerAuth": {}}],
+            "responses": {
+               "401": {
+                  "description": "Unauthorized"
+               },
+               "400": {
+                  "description": "Quatrocentos"
+               },
+               "200": {
+                  "description": "OK",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object",
+                           "$ref": "#/components/schemas/Developer"
+                        }
+                     }
+                  }
+               }
+            }
+         },
+         "put": {
+            "summary": "Atualizar desenvolvedor pelo id",
+            "description": "Rota responsavel por atualizar um desenvolvedor pelo id",
+            "tags": ["Developer"],
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "$ref": "#/components/schemas/Developer"
+                     },
+                     "examples": {
+                        "developer": {
+                           "value": {
+                              "name": "Developer",
+                              "email": "email@email.com",
+                              "password": "123456789",
+                              "sex": "M",
+                              "hobby": "Gosto de codar nas horas vagas",
+                              "birthDate": "23/04/1998"
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "parameters": [
+               {
+                  "name": "id",
+                  "in": "path",
+                  "description": "Id do desenvolvedor para busca",
+                  "required": true
+               }
+            ],
+            "security": [{"bearerAuth": {}}],
+            "responses": {
+               "401": {
+                  "description": "Unauthorized"
+               },
+               "400": {
+                  "description": "Quatrocentos"
+               },
+               "200": {
+                  "description": "OK",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object",
+                           "$ref": "#/components/schemas/Developer"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+   },
+   "components": {
+      "schemas": {
+         "Developer": {
+            "type": "object",
+            "properties": {
+               "name": {
+                  "type": "string"
+               },
+               "email": {
+                  "type": "string"
+               },
+               "password": {
+                  "type": "string",
+                  "format": "password"
+               },
+               "sex": {
+                  "type": "string"
+               },
+               "hobby": {
+                  "type": "string"
+               },
+               "birthDate": {
+                  "type": "string",
+                  "format": "date"
+               }
+            }
+         }
+      },
+      "securitySchemes": {
+         "bearerAuth": {
+            "type": "http",
+            "scheme": "bearer",
+            "bearerFormat": "JWT"
+         }
+      }
+   }
+}
