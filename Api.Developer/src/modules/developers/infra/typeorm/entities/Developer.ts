@@ -3,6 +3,7 @@ import {
    CreateDateColumn,
    DeleteDateColumn,
    Entity,
+   Index,
    PrimaryColumn,
    UpdateDateColumn,
 } from 'typeorm';
@@ -12,6 +13,7 @@ import { IDeveloper } from '@modules/developers/domain/models/IDeveloper';
 
 @Entity('developers')
 class Developer implements IDeveloper {
+   @Index('pk-idx')
    @PrimaryColumn()
    id: string;
 
@@ -20,11 +22,6 @@ class Developer implements IDeveloper {
 
    @Column()
    email: string;
-
-   @Exclude()
-   @Column()
-   password: string;
-
    @Column()
    sex: string;
 

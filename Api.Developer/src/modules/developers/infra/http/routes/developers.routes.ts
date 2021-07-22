@@ -1,18 +1,16 @@
 import { Router } from 'express';
 import { DevelopersControllers } from '../controllers/DevelopersController';
 import { celebrate, Joi, Segments } from 'celebrate';
-import { isAuthenticated } from '../../../../../shared/infra/http/middlewares/isAuthenticated';
 
 const developersRouter = Router();
 const developersController = new DevelopersControllers();
 
-developersRouter.get('/', isAuthenticated, function (req, res) {
+developersRouter.get('/', function (req, res) {
    developersController.index(req, res);
 });
 
 developersRouter.get(
    '/:id',
-   isAuthenticated,
    celebrate({
       [Segments.PARAMS]: {
          id: Joi.string().uuid().required(),
@@ -27,7 +25,6 @@ developersRouter.post(
       [Segments.BODY]: {
          name: Joi.string().required(),
          email: Joi.string().email().required(),
-         password: Joi.string().required(),
          sex: Joi.string().required(),
          hobby: Joi.string().required(),
          birthDate: Joi.date().required(),
@@ -38,15 +35,13 @@ developersRouter.post(
 
 developersRouter.put(
    '/:id',
-   isAuthenticated,
    celebrate({
       [Segments.BODY]: {
-         name: Joi.string().required(),
-         email: Joi.string().email().required(),
-         password: Joi.string().required(),
-         sex: Joi.string().required(),
-         hobby: Joi.string().required(),
-         birthDate: Joi.date().required(),
+         name: Joi.string(),
+         email: Joi.string().email(),
+         sex: Joi.string(),
+         hobby: Joi.string(),
+         birthDate: Joi.date(),
       },
       [Segments.PARAMS]: {
          id: Joi.string().uuid().required(),
@@ -57,7 +52,6 @@ developersRouter.put(
 
 developersRouter.delete(
    '/:id',
-   isAuthenticated,
    celebrate({
       [Segments.PARAMS]: {
          id: Joi.string().uuid().required(),

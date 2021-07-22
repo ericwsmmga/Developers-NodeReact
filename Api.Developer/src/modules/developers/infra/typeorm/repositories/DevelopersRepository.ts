@@ -15,7 +15,6 @@ class DevelopersRepository implements IDevelopersRepository {
    async create({
       name,
       email,
-      password,
       sex,
       age,
       hobby,
@@ -24,7 +23,6 @@ class DevelopersRepository implements IDevelopersRepository {
       const developer = this.ormRepository.create({
          name,
          email,
-         password,
          sex,
          age,
          hobby,
@@ -50,12 +48,20 @@ class DevelopersRepository implements IDevelopersRepository {
       field?: string,
       search?: string,
    ): Promise<IPaginateDeveloper | undefined> {
-      const developers = await this.ormRepository
-         .createQueryBuilder()
-         .where(`developers.${field} LIKE :search`, { search: `%${search}%` })
-         .paginate(5);
-
-      return developers as IPaginateDeveloper;
+      if (field && search) {
+         return (await this.ormRepository
+            .createQueryBuilder('developers')
+            .where(`LOWER(${field}) LIKE :query`, {
+               query: `%${search.toLowerCase()}%`,
+            })
+            .orderBy(`${field}`)
+            .paginate(5)) as IPaginateDeveloper;
+      } else {
+         return (await this.ormRepository
+            .createQueryBuilder()
+            .orderBy('name')
+            .paginate(5)) as IPaginateDeveloper;
+      }
    }
 
    async findByEmail(email: string): Promise<IDeveloper | undefined> {

@@ -5,6 +5,7 @@ import { IDeveloper } from '../domain/models/IDeveloper';
 import { IUpdateDeveloper } from '../domain/models/IUpdateDeveloper';
 import { IDevelopersRepository } from '../domain/repositories/IDevelopersRepository';
 import { calculateAge } from '../helpers/calculateAge';
+import { returnFormatedDate } from '../helpers/returnFormatedDate';
 import { sexIsValid } from '../helpers/validateSex';
 import { Developer } from '../infra/typeorm/entities/Developer';
 import { IHashProvider } from '../providers/hashprovider/models/IHashProvider';
@@ -24,7 +25,6 @@ class UpdateDeveloperService {
       id,
       name,
       email,
-      password,
       sex,
       hobby,
       birthDate,
@@ -46,24 +46,22 @@ class UpdateDeveloperService {
             );
          }
 
-         if (sex.length > 2 || !sexIsValid(sex.toUpperCase())) {
+         if (sex && (sex.length > 2 || !sexIsValid(sex.toUpperCase()))) {
             throw new AppError(
                "The sex informed is not valid. Gender must be 'Feminine(F)', 'Masculine(M)', 'Not Binary(NB)' or 'Others(O)'",
             );
          }
 
-         const hashedPassword = await this.hashProvider.generateHash(password);
-
-         developer.name = name;
-         developer.email = email;
-         developer.password = hashedPassword;
-         developer.sex = sex;
-         developer.hobby = hobby;
-         developer.birthDate = birthDate;
-
-         developer.age = calculateAge(birthDate);
+         developer.name = name ? name : developer.name;
+         developer.email = email ? email : developer.email;
+         developer.sex = sex ? sex : developer.sex;
+         developer.hobby = hobby ? hobby : developer.hobby;
+         developer.birthDate = birthDate ? birthDate : developer.birthDate;
+         developer.age = birthDate ? calculateAge(birthDate) : developer.age;
 
          await this.developerRepository.save(developer);
+
+         developer.birthDate = returnFormatedDate(developer.birthDate);
 
          return developer;
       } catch (error) {

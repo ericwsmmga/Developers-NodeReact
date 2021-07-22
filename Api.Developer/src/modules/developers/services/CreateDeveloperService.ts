@@ -8,6 +8,8 @@ import { IHashProvider } from '../providers/hashprovider/models/IHashProvider';
 import { ILogErrorsRepository } from '@modules/logs/errors/domain/repositories/ILogErrorsRepository';
 import { calculateAge } from '../helpers/calculateAge';
 import { sexIsValid } from '../helpers/validateSex';
+import { formatDate } from '../helpers/formatDate';
+import { returnFormatedDate } from '../helpers/returnFormatedDate';
 
 @injectable()
 class CreateDeveloperService {
@@ -23,7 +25,6 @@ class CreateDeveloperService {
    async execute({
       name,
       email,
-      password,
       sex,
       hobby,
       birthDate,
@@ -45,19 +46,16 @@ class CreateDeveloperService {
             );
          }
 
-         const calculatedAge = calculateAge(birthDate);
-
-         const hashedPassword = await this.hashProvider.generateHash(password);
-
          const developer = await this.developerRepository.create({
             name,
             email,
-            password: hashedPassword,
             sex: sex.toUpperCase(),
-            age: calculatedAge,
+            age: calculateAge(birthDate),
             hobby,
-            birthDate,
+            birthDate: formatDate(birthDate),
          });
+
+         developer.birthDate = returnFormatedDate(developer.birthDate);
 
          return developer;
       } catch (error) {

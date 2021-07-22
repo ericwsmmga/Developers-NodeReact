@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner, Table } from 'typeorm';
+import { MigrationInterface, QueryRunner, Table, TableIndex } from 'typeorm';
 
 export class CreateDevelopers1624826124376 implements MigrationInterface {
    public async up(queryRunner: QueryRunner): Promise<void> {
@@ -20,10 +20,6 @@ export class CreateDevelopers1624826124376 implements MigrationInterface {
                   type: 'varchar',
                },
                {
-                  name: 'password',
-                  type: 'varchar',
-               },
-               {
                   name: 'sex',
                   type: 'varchar(2)',
                },
@@ -37,7 +33,7 @@ export class CreateDevelopers1624826124376 implements MigrationInterface {
                },
                {
                   name: 'birthDate',
-                  type: 'timestamp with time zone',
+                  type: 'date',
                },
                {
                   name: 'created_at',
@@ -57,9 +53,17 @@ export class CreateDevelopers1624826124376 implements MigrationInterface {
             ],
          }),
       );
+      await queryRunner.createIndex(
+         'developers',
+         new TableIndex({
+            name: 'IDX_PK',
+            columnNames: ['id'],
+         }),
+      );
    }
 
    public async down(queryRunner: QueryRunner): Promise<void> {
       await queryRunner.dropTable('developers');
+      await queryRunner.dropIndex('developers', 'IDX_PK');
    }
 }

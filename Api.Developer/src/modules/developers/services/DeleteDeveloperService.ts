@@ -7,7 +7,7 @@ class DeleteDeveloperService {
    constructor(
       @inject('DevelopersRepository')
       private developerRepository: IDevelopersRepository,
-      @inject('ErrorsRepository')
+      @inject('LogErrorsRepository')
       private errorsRepository: ILogErrorsRepository,
    ) {}
 
