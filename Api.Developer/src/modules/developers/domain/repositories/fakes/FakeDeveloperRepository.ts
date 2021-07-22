@@ -11,7 +11,6 @@ class FakeDeveloperRepository implements IDevelopersRepository {
    async create({
       name,
       email,
-      password,
       sex,
       age,
       hobby,
@@ -22,7 +21,6 @@ class FakeDeveloperRepository implements IDevelopersRepository {
       developer.id = uuid();
       developer.name = name;
       developer.email = email;
-      developer.password = password;
       developer.sex = sex;
       developer.age = age;
       developer.hobby = hobby;

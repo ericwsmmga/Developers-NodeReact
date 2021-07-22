@@ -2,7 +2,6 @@ interface IDeveloper {
    id: string;
    name: string;
    email: string;
-   password: string;
    sex: string;
    hobby: string;
    age: number;

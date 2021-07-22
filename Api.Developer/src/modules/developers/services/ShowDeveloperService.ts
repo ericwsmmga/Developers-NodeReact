@@ -2,6 +2,7 @@ import { ILogErrorsRepository } from '@modules/logs/errors/domain/repositories/I
 import { AppError } from '@shared/errors/appError';
 import { inject, injectable } from 'tsyringe';
 import { IDevelopersRepository } from '../domain/repositories/IDevelopersRepository';
+import { returnFormatedDate } from '../helpers/returnFormatedDate';
 import { Developer } from '../infra/typeorm/entities/Developer';
 
 @injectable()
@@ -9,7 +10,7 @@ class ShowDeveloperService {
    constructor(
       @inject('DevelopersRepository')
       private developerRepository: IDevelopersRepository,
-      @inject('ErrorsRepository')
+      @inject('LogErrorsRepository')
       private errorsRepository: ILogErrorsRepository,
    ) {}
 
@@ -20,6 +21,8 @@ class ShowDeveloperService {
          if (!developer) {
             throw new AppError('Developer not found!', 404);
          }
+
+         developer.birthDate = returnFormatedDate(developer.birthDate);
 
          return developer;
       } catch (error) {

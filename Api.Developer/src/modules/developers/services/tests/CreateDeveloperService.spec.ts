@@ -26,7 +26,7 @@ describe('CreateDeveloper', () => {
       const developer = await createDeveloper.execute({
          name: 'Nome Teste',
          email: 'email@email.com',
-         password: '123456789',
+
          sex: 'M',
          age: 0,
          hobby: 'Hobby teste',
@@ -40,7 +40,7 @@ describe('CreateDeveloper', () => {
       await createDeveloper.execute({
          name: 'Nome Teste',
          email: 'email@email.com',
-         password: '123456789',
+
          sex: 'M',
          age: 0,
          hobby: 'Hobby teste',
@@ -50,7 +50,7 @@ describe('CreateDeveloper', () => {
          createDeveloper.execute({
             name: 'Nome Teste',
             email: 'email@email.com',
-            password: '123456789',
+
             sex: 'M',
             age: 0,
             hobby: 'Hobby teste',
@@ -64,7 +64,7 @@ describe('CreateDeveloper', () => {
          createDeveloper.execute({
             name: 'Nome Teste',
             email: 'email@email.com',
-            password: '123456789',
+
             sex: 'A',
             age: 0,
             hobby: 'Hobby teste',

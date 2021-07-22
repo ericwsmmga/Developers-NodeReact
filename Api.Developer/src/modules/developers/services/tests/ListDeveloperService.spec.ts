@@ -21,7 +21,6 @@ describe('ListDeveloper', () => {
       await fakeDeveloperRepository.create({
          name: 'Nome Teste',
          email: 'email@email.com',
-         password: '123456789',
          sex: 'M',
          age: 0,
          hobby: 'Hobby teste',
@@ -31,7 +30,6 @@ describe('ListDeveloper', () => {
       await fakeDeveloperRepository.create({
          name: 'Nome Teste',
          email: 'email1@email.com',
-         password: '123456789',
          sex: 'M',
          age: 0,
          hobby: 'Hobby teste',

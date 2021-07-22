@@ -26,7 +26,7 @@ describe('UpdateDeveloper', () => {
       const developer = await fakeDeveloperRepository.create({
          name: 'Nome Teste',
          email: 'email@email.com',
-         password: '123456789',
+
          sex: 'M',
          age: 0,
          hobby: 'Hobby teste',
@@ -37,7 +37,7 @@ describe('UpdateDeveloper', () => {
          id: developer.id,
          name: 'Nome Teste',
          email: 'email1@email.com',
-         password: '123456789',
+
          sex: 'M',
          hobby: 'Hobby teste',
          birthDate: new Date(2000, 1, 2),
@@ -52,7 +52,6 @@ describe('UpdateDeveloper', () => {
             id: '266d4af7-f203-4ba7-b45a-040dc0a68c1f',
             name: 'Nome Teste',
             email: 'email@email.com',
-            password: '123456789',
             sex: 'M',
             hobby: 'Hobby teste',
             birthDate: new Date(2000, 1, 2),
@@ -64,7 +63,6 @@ describe('UpdateDeveloper', () => {
       await fakeDeveloperRepository.create({
          name: 'Nome Teste',
          email: 'email@email.com',
-         password: '123456789',
          sex: 'M',
          age: 0,
          hobby: 'Hobby teste',
@@ -74,7 +72,6 @@ describe('UpdateDeveloper', () => {
       const developer = await fakeDeveloperRepository.create({
          name: 'Nome Teste',
          email: 'email1@email.com',
-         password: '123456789',
          sex: 'M',
          age: 0,
          hobby: 'Hobby teste',
@@ -86,7 +83,6 @@ describe('UpdateDeveloper', () => {
             id: developer.id,
             name: 'Nome Teste',
             email: 'email@email.com',
-            password: '123456789',
             sex: 'M',
             hobby: 'Hobby teste',
             birthDate: new Date(2000, 1, 2),
@@ -98,7 +94,6 @@ describe('UpdateDeveloper', () => {
       const developer = await fakeDeveloperRepository.create({
          name: 'Nome Teste',
          email: 'email1@email.com',
-         password: '123456789',
          sex: 'M',
          age: 0,
          hobby: 'Hobby teste',
@@ -110,7 +105,6 @@ describe('UpdateDeveloper', () => {
             id: developer.id,
             name: 'Nome Teste',
             email: 'email@email.com',
-            password: '123456789',
             sex: 'A',
             hobby: 'Hobby teste',
             birthDate: new Date(2000, 1, 2),

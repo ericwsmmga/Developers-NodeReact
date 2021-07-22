@@ -16,7 +16,7 @@ class DevelopersControllers {
 
       const developers = await listDevelopersService.execute(
          fieldValue?.toString().toLowerCase(),
-         searchValues?.toString().toLowerCase(),
+         searchValues?.toString(),
       );
 
       return response.status(200).json(classToClass(developers));
@@ -33,14 +33,13 @@ class DevelopersControllers {
    }
 
    async create(request: Request, response: Response): Promise<Response> {
-      const { name, email, password, sex, hobby, birthDate } = request.body;
+      const { name, email, sex, hobby, birthDate } = request.body;
 
       const createDeveloperService = container.resolve(CreateDeveloperService);
 
       const developer = await createDeveloperService.execute({
          name,
          email,
-         password,
          sex,
          age: 0,
          hobby,
@@ -53,7 +52,7 @@ class DevelopersControllers {
    async update(request: Request, response: Response): Promise<Response> {
       const { id } = request.params;
 
-      const { name, email, password, sex, hobby, birthDate } = request.body;
+      const { name, email, sex, hobby, birthDate } = request.body;
 
       const updateDeveloperService = container.resolve(UpdateDeveloperService);
 
@@ -61,7 +60,6 @@ class DevelopersControllers {
          id,
          name,
          email,
-         password,
          sex,
          hobby,
          birthDate,

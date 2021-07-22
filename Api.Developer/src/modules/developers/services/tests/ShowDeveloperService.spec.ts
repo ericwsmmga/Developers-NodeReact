@@ -22,7 +22,6 @@ describe('ShowDeveloper', () => {
       const developer = await fakeDeveloperRepository.create({
          name: 'Nome Teste',
          email: 'email@email.com',
-         password: '123456789',
          sex: 'M',
          age: 0,
          hobby: 'Hobby teste',
