@@ -1,10 +1,10 @@
 {
    "openapi": "3.0.0",
    "info": {
-      "title": "Developer CRUD API",
-      "description": "API developed to meet the necessary technical proof requirements.",
+      "title": "Developers CRUD",
+      "description": "API developed  to meet the necessary technical proof requirements.",
       "contact": {
-         "email": "ericwsmmga@gmail.com"
+         "email": "ericwsmga@gmail.com"
       },
       "version": "1.0.0"
    },
@@ -24,10 +24,10 @@
                         "developer": {
                            "value": {
                               "name": "Developer",
-                              "email": "email@email.com",                      
+                              "email": "email@email.com",
                               "sex": "M",
                               "hobby": "Gosto de codar nas horas vagas",
-                              "birthDate": "1998-04-25"
+                              "birthDate": "01/01/2000"
                            }
                         }
                      }
@@ -51,7 +51,7 @@
                }
             }
          },
-         "get": {
+         "getdoc": {
             "summary": "Get all developers",
             "description": "Route responsible for getting all developers",
             "tags": ["Developer"],
@@ -74,7 +74,7 @@
                   "description": "Developer id for search",
                   "required": true
                }
-            ],            
+            ],
             "responses": {
                "400": {
                   "description": "Bad Request"
@@ -106,10 +106,10 @@
                         "developer": {
                            "value": {
                               "name": "Developer",
-                              "email": "email@email.com",                        
+                              "email": "email@email.com",
                               "sex": "M",
                               "hobby": "Gosto de codar nas horas vagas",
-                              "birthDate": "1998-04-25"
+                              "birthDate": "01/01/2000"
                            }
                         }
                      }
@@ -152,7 +152,7 @@
                   "description": "Developer id for removal",
                   "required": true
                }
-            ],            
+            ],
             "responses": {
                "400": {
                   "description": "Bad Request"
@@ -174,7 +174,7 @@
                },
                "email": {
                   "type": "string"
-               },              
+               },
                "sex": {
                   "type": "string"
                },

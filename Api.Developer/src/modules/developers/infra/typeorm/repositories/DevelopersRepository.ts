@@ -1,7 +1,7 @@
-import { ICreateDeveloper } from '@modules/developers/domain/models/ICreateDeveloper';
-import { IDeveloper } from '@modules/developers/domain/models/IDeveloper';
-import { IPaginateDeveloper } from '@modules/developers/domain/models/IPaginateDeveloper';
-import { IDevelopersRepository } from '@modules/developers/domain/repositories/IDevelopersRepository';
+import { ICreateDeveloper } from '../../../domain/models/ICreateDeveloper';
+import { IDeveloper } from '../../../domain/models/IDeveloper';
+import { IPaginateDeveloper } from '../../../domain/models/IPaginateDeveloper';
+import { IDevelopersRepository } from '../../../domain/repositories/IDevelopersRepository';
 import { getRepository, Repository } from 'typeorm';
 import { Developer } from '../entities/Developer';
 

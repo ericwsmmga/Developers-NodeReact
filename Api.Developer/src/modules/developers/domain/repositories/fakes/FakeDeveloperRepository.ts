@@ -1,9 +1,9 @@
 import { v4 as uuid } from 'uuid';
-import { ICreateDeveloper } from '@modules/developers/domain/models/ICreateDeveloper';
-import { IDevelopersRepository } from '@modules/developers/domain/repositories/IDevelopersRepository';
-import { Developer } from '@modules/developers/infra/typeorm/entities/Developer';
 import { IPaginateDeveloper } from '../../models/IPaginateDeveloper';
 import { IDeveloper } from '../../models/IDeveloper';
+import { ICreateDeveloper } from '../../models/ICreateDeveloper';
+import { Developer } from '../../../infra/typeorm/entities/Developer';
+import { IDevelopersRepository } from '../IDevelopersRepository';
 
 class FakeDeveloperRepository implements IDevelopersRepository {
    private developers: Developer[] = [];
@@ -48,8 +48,8 @@ class FakeDeveloperRepository implements IDevelopersRepository {
          per_page: 1,
          total: 1,
          current_page: 1,
-         prev_page: null,
-         next_page: null,
+         prev_page: 1,
+         next_page: 1,
          data: this.developers,
       };
 

@@ -1,5 +1,5 @@
-import { ILogErrorsRepository } from '@modules/logs/errors/domain/repositories/ILogErrorsRepository';
-import { AppError } from '@shared/errors/appError';
+import { ILogErrorsRepository } from '../../../modules/logs/errors/domain/repositories/ILogErrorsRepository';
+import { AppError } from '../../../shared/errors/appError';
 import { inject, injectable } from 'tsyringe';
 import { IDevelopersRepository } from '../domain/repositories/IDevelopersRepository';
 @injectable()

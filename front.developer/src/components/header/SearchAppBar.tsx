@@ -1,10 +1,13 @@
+import { FormEvent } from "react";
+import { useState, useContext } from "react";
+import Button from "@material-ui/core/Button";
 import AppBar from "@material-ui/core/AppBar";
-import MenuIcon from "@material-ui/icons/Menu";
 import Toolbar from "@material-ui/core/Toolbar";
+import ClearIcon from "@material-ui/icons/Clear";
 import SearchIcon from "@material-ui/icons/Search";
 import InputBase from "@material-ui/core/InputBase";
 import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
+import { ContextDeveloper } from "../../context/ContextDeveloper";
 import {
   createStyles,
   alpha,
@@ -14,13 +17,13 @@ import {
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    body: { margin: "0px !important" },
     root: {
       flexGrow: 1,
     },
     menuButton: {
       marginRight: theme.spacing(2),
     },
-
     addButton: {
       marginRight: theme.spacing(2),
     },
@@ -34,6 +37,7 @@ const useStyles = makeStyles((theme: Theme) =>
     search: {
       position: "relative",
       borderRadius: theme.shape.borderRadius,
+      flexDirection: "row",
       backgroundColor: alpha(theme.palette.common.white, 0.15),
       "&:hover": {
         backgroundColor: alpha(theme.palette.common.white, 0.25),
@@ -46,13 +50,10 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     searchIcon: {
-      padding: theme.spacing(0, 2),
-      height: "100%",
-      position: "absolute",
-      pointerEvents: "none",
-      display: "flex",
+      pointerEvents: "auto",
       alignItems: "center",
       justifyContent: "center",
+      color: "#ffffff",
     },
     inputRoot: {
       color: "inherit",
@@ -74,34 +75,46 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function SearchAppBar() {
   const classes = useStyles();
+  const [value, setValue] = useState("");
+  const { setSearch } = useContext(ContextDeveloper);
+
+  async function handleSearch(event: FormEvent) {
+    event.preventDefault();
+    setSearch("name", value);
+  }
+  async function clear() {
+    setValue("");
+    setSearch("", "");
+  }
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            Projeto CRUD
+            Desenvolvedores CRUD
           </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
+          <form onSubmit={handleSearch}>
+            <div className={classes.search}>
+              <InputBase
+                placeholder="Search…"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                value={value}
+                inputProps={{ "aria-label": "search" }}
+                onChange={(event) => setValue(event.target.value)}
+              />
+              {value && (
+                <Button className={classes.searchIcon} onClick={clear}>
+                  <ClearIcon />
+                </Button>
+              )}
+              <Button className={classes.searchIcon} type="submit">
+                <SearchIcon />
+              </Button>
             </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ "aria-label": "search" }}
-            />
-          </div>
+          </form>
         </Toolbar>
       </AppBar>
     </div>

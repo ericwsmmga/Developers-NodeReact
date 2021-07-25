@@ -12,6 +12,12 @@
     "prettier/@typescript-eslint",
     "plugin:prettier/recommended"
   ],
+  "prettier/prettier": [
+      "error",
+      {
+         "endOfLine": "auto"
+      }
+   ],
   "rules": {
     "no-console": "warn",
     "prettier/prettier": "error"

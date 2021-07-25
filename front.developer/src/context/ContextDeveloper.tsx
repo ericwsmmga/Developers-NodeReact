@@ -1,18 +1,8 @@
 import api from "../api";
-import { Developer } from "../types/Developer";
-import { createContext, ReactNode, useState } from "react";
 import { Paginate } from "../types/Paginate";
-
-type ContextType = {
-  search: SearchType;
-  setSearch: (fieldValue?: string, searchValues?: string) => Promise<void>;
-};
-
-type SearchType = {
-  developers: Paginate;
-  fieldValue: string;
-  searchValues: string;
-};
+import { SearchType } from "../types/SearchType";
+import { ContextType } from "../types/ContextType";
+import { createContext, ReactNode, useState } from "react";
 
 type DeveloperContextProviderProps = {
   children: ReactNode;
@@ -23,14 +13,18 @@ export const ContextDeveloper = createContext({} as ContextType);
 export function ContextDeveloperProvider(props: DeveloperContextProviderProps) {
   const [search, setDevelopers] = useState<SearchType>({} as SearchType);
 
-  async function setSearch(fieldValue?: string, searchValue?: string) {
+  async function setSearch(
+    fieldValue?: string,
+    searchValue?: string,
+    page?: number
+  ) {
     const response = await api.get("/developers", {
       params: {
-        fieldValue: fieldValue ?? search?.fieldValue,
-        searchValues: searchValue ?? search.searchValues,
+        field: fieldValue ?? search.fieldValue,
+        search: searchValue ?? search.searchValues,
+        page: page ?? search.page,
       },
     });
-
     const developers: Paginate = {
       from: response?.data.from,
       to: response?.data.to,
@@ -42,26 +36,11 @@ export function ContextDeveloperProvider(props: DeveloperContextProviderProps) {
       data: response?.data.data,
       last_page: response?.data.last_page,
     };
-
-    console.log(developers);
-
-    // const developers: Developer[] = response?.data.data.map(
-    //   (dev: Developer) => {
-    //     return {
-    //       id: dev.id,
-    //       name: dev.name,
-    //       age: dev.age,
-    //       hobby: dev.hobby,
-    //       sex: dev.sex,
-    //       birthDate: dev.birthDate,
-    //     };
-    //   }
-    // );
-
     setDevelopers({
       developers: developers,
       fieldValue: fieldValue ?? search?.fieldValue,
       searchValues: searchValue ?? search.searchValues,
+      page: page ?? search.page,
     });
   }
   return (

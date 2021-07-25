@@ -53,13 +53,6 @@ export class CreateDevelopers1624826124376 implements MigrationInterface {
             ],
          }),
       );
-      await queryRunner.createIndex(
-         'developers',
-         new TableIndex({
-            name: 'IDX_PK',
-            columnNames: ['id'],
-         }),
-      );
    }
 
    public async down(queryRunner: QueryRunner): Promise<void> {

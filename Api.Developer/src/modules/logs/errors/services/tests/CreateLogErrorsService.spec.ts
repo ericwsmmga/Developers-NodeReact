@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { FakeLogErrorsRepository } from '@modules/logs/errors/domain/repositories/fakes/FakeLogErrorsRepository';
+import { FakeLogErrorsRepository } from '../../domain/repositories/fakes/FakeLogErrorsRepository';
 import { CreateLogErrorsService } from '../CreateLogErrorsService';
 
 let fakeLogErrorsRepository: FakeLogErrorsRepository;
