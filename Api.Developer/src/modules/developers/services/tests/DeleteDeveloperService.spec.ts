@@ -1,8 +1,8 @@
 import 'reflect-metadata';
-import { FakeDeveloperRepository } from '@modules/developers/domain/repositories/fakes/FakeDeveloperRepository';
+import { FakeLogErrorsRepository } from '../../../../modules/logs/errors/domain/repositories/fakes/FakeLogErrorsRepository';
+import { AppError } from '../../../../shared/errors/appError';
+import { FakeDeveloperRepository } from '../../domain/repositories/fakes/FakeDeveloperRepository';
 import { DeleteDeveloperService } from '../DeleteDeveloperService';
-import { AppError } from '@shared/errors/appError';
-import { FakeLogErrorsRepository } from '@modules/logs/errors/domain/repositories/fakes/FakeLogErrorsRepository';
 
 let fakeDeveloperRepository: FakeDeveloperRepository;
 let deleteDeveloper: DeleteDeveloperService;
@@ -22,7 +22,6 @@ describe('DeleteDeveloper', () => {
       const developer = await fakeDeveloperRepository.create({
          name: 'Nome Teste',
          email: 'email@email.com',
-
          sex: 'M',
          age: 0,
          hobby: 'Hobby teste',

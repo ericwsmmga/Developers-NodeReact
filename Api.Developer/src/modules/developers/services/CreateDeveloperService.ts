@@ -1,15 +1,15 @@
 import 'reflect-metadata';
-import { AppError } from '@shared/errors/appError';
 import { inject, injectable } from 'tsyringe';
 import { ICreateDeveloper } from '../domain/models/ICreateDeveloper';
 import { IDeveloper } from '../domain/models/IDeveloper';
 import { IDevelopersRepository } from '../domain/repositories/IDevelopersRepository';
 import { IHashProvider } from '../providers/hashprovider/models/IHashProvider';
-import { ILogErrorsRepository } from '@modules/logs/errors/domain/repositories/ILogErrorsRepository';
 import { calculateAge } from '../helpers/calculateAge';
 import { sexIsValid } from '../helpers/validateSex';
 import { formatDate } from '../helpers/formatDate';
 import { returnFormatedDate } from '../helpers/returnFormatedDate';
+import { ILogErrorsRepository } from '../../../modules/logs/errors/domain/repositories/ILogErrorsRepository';
+import { AppError } from '../../../shared/errors/appError';
 
 @injectable()
 class CreateDeveloperService {

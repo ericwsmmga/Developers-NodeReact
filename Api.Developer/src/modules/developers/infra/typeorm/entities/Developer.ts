@@ -9,7 +9,7 @@ import {
 } from 'typeorm';
 import { Exclude } from 'class-transformer';
 import { v4 as uuid } from 'uuid';
-import { IDeveloper } from '@modules/developers/domain/models/IDeveloper';
+import { IDeveloper } from '../../../domain/models/IDeveloper';
 
 @Entity('developers')
 class Developer implements IDeveloper {
@@ -22,6 +22,7 @@ class Developer implements IDeveloper {
 
    @Column()
    email: string;
+
    @Column()
    sex: string;
 

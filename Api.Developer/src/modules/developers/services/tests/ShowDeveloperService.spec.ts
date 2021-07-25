@@ -1,8 +1,8 @@
 import 'reflect-metadata';
-import { FakeDeveloperRepository } from '@modules/developers/domain/repositories/fakes/FakeDeveloperRepository';
-import { AppError } from '@shared/errors/appError';
+import { FakeLogErrorsRepository } from '../../../../modules/logs/errors/domain/repositories/fakes/FakeLogErrorsRepository';
+import { AppError } from '../../../../shared/errors/appError';
+import { FakeDeveloperRepository } from '../../domain/repositories/fakes/FakeDeveloperRepository';
 import { ShowDeveloperService } from '../../services/ShowDeveloperService';
-import { FakeLogErrorsRepository } from '@modules/logs/errors/domain/repositories/fakes/FakeLogErrorsRepository';
 
 let fakeDeveloperRepository: FakeDeveloperRepository;
 let showDeveloper: ShowDeveloperService;

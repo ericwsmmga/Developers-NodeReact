@@ -1,5 +1,5 @@
-import { AppError } from '@shared/errors/appError';
 import moment from 'moment';
+import { AppError } from '../../../shared/errors/appError';
 
 function calculateAge(birthDate: Date): number {
    const age = moment().diff(birthDate, 'years');

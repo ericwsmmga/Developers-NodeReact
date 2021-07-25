@@ -1,7 +1,7 @@
-import { ICreateLogErrors } from '@modules/logs/errors/domain/models/ICreateLogErrors';
-import { ILogErrors } from '@modules/logs/errors/domain/models/ILogErrors';
-import { ILogErrorsRepository } from '@modules/logs/errors/domain/repositories/ILogErrorsRepository';
 import { getRepository, Repository } from 'typeorm';
+import { ICreateLogErrors } from '../../../domain/models/ICreateLogErrors';
+import { ILogErrors } from '../../../domain/models/ILogErrors';
+import { ILogErrorsRepository } from '../../../domain/repositories/ILogErrorsRepository';
 import { LogErrors } from '../entities/logErrors';
 
 class LogErrorsRepository implements ILogErrorsRepository {

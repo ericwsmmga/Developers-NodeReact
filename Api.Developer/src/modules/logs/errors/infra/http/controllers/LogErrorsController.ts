@@ -1,6 +1,6 @@
 import { container } from 'tsyringe';
-import { ICreateLogErrors } from '@modules/logs/errors/domain/models/ICreateLogErrors';
-import { CreateLogErrorsService } from '@modules/logs/errors/services/CreateLogErrorsService';
+import { ICreateLogErrors } from '../../../domain/models/ICreateLogErrors';
+import { CreateLogErrorsService } from '../../../services/CreateLogErrorsService';
 
 class LogErrorsControllers {
    create({

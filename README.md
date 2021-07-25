@@ -8,7 +8,6 @@
     <a href="https://nodejs.org/en/">🔗 Node</a>
     <a href="https://www.typescriptlang.org/">🔗 Typescript</a>
     <a href="https://reactjs.org/">🔗 React</a>
-    
 </h1>
 
 <h2>Pré-requisitos</h2>
@@ -25,12 +24,40 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 # Clone este repositório
 git clone https://github.com/ericwsmmga/ProjetoNodeDev
 
+# Acesse a pasta do projeto no terminal/cmd
+cd Api.Developer
+
+# Rode o projeto
+yarn up
+
+```
+
+<p>Caso ocorra algum problema ou queira derrubar a aplicação, execute o comando</p>
+
+```bash
+# Na pasta do projeto rode o comando no terminal/cmd
+yarn down
+```
+
+<h2>O servidor inciará na porta:4000</h2> 
+<a href="http://localhost:4000/api-docs">acesse a aplicação</a>
+
+<br/>
+<br/>
+
+<h2>Rodando os testes</h2>
+
+```bash
+# Na pasta do projeto rode o comando no terminal/cmd
+yarn jest
+
+```
+
 <h2>Rodando o Front End</h2>
 
 # Acesse a pasta do projeto no terminal/cmd
 
 cd front.developer
-
 
 # Instale os pacotes de Dependência do projeto
 
@@ -41,7 +68,6 @@ yarn
 yarn start
 
 <h2>Status</h2>
-<h4 align="center">
-	🚧  Node, Typescript, React 🚀 Em construção...  🚧
+<h4 align="center"> 
+	🚧  Node, Typescript, React🚀 Em construção...  🚧
 </h4>
-```

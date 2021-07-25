@@ -1,3 +1,4 @@
+import dotenv from 'dotenv';
 import 'reflect-metadata';
 import 'dotenv/config';
 import express, { NextFunction, Request, Response } from 'express';
@@ -7,11 +8,11 @@ import { pagination } from 'typeorm-pagination';
 import cors from 'cors';
 import { routes } from './routes';
 import { AppError } from '../../errors/appError';
-import '@shared/infra/typeorm';
-import '@shared/container';
+import '../typeorm';
+import '../../container';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocs from '../../../swagger.json';
-import { LogErrorsControllers } from '@modules/logs/errors/infra/http/controllers/LogErrorsController';
+import { LogErrorsControllers } from '../../../modules/logs/errors/infra/http/controllers/LogErrorsController';
 
 const app = express();
 
@@ -46,16 +47,15 @@ app.use(
 
       return response.status(statusCode).json({
          status: 'error',
-         message: error.message,
+         message: 'Internal Server Error.',
       });
    },
 );
 
+dotenv.config();
+
 app.listen(process.env.APP_PORT, () => {
    console.log(
-      'Server started on ' +
-         'http://localhost:' +
-         process.env.APP_PORT +
-         '/api-docs',
+      'Server started on ' + 'http://localhost:' + process.env.APP_PORT + '/api-docs',
    );
 });

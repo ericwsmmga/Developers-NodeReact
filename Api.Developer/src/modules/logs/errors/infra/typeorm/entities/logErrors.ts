@@ -1,4 +1,3 @@
-import { ILogErrors } from '@modules/logs/errors/domain/models/ILogErrors';
 import { Exclude } from 'class-transformer';
 import {
    Column,
@@ -9,6 +8,7 @@ import {
    UpdateDateColumn,
 } from 'typeorm';
 import { v4 as uuid } from 'uuid';
+import { ILogErrors } from '../../../domain/models/ILogErrors';
 
 @Entity('logErrors')
 class LogErrors implements ILogErrors {

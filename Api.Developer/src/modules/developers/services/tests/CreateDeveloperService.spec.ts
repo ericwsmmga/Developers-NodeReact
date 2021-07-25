@@ -1,9 +1,9 @@
 import 'reflect-metadata';
 import { CreateDeveloperService } from '../../services/CreateDeveloperService';
-import { FakeDeveloperRepository } from '@modules/developers/domain/repositories/fakes/FakeDeveloperRepository';
-import { AppError } from '@shared/errors/appError';
 import { FakeHashProvider } from '../../providers/hashprovider/fakes/FakeHashProvider';
-import { FakeLogErrorsRepository } from '@modules/logs/errors/domain/repositories/fakes/FakeLogErrorsRepository';
+import { FakeDeveloperRepository } from '../../domain/repositories/fakes/FakeDeveloperRepository';
+import { FakeLogErrorsRepository } from '../../../../modules/logs/errors/domain/repositories/fakes/FakeLogErrorsRepository';
+import { AppError } from '../../../../shared/errors/appError';
 
 let fakeDeveloperRepository: FakeDeveloperRepository;
 let createDeveloper: CreateDeveloperService;
@@ -26,7 +26,6 @@ describe('CreateDeveloper', () => {
       const developer = await createDeveloper.execute({
          name: 'Nome Teste',
          email: 'email@email.com',
-
          sex: 'M',
          age: 0,
          hobby: 'Hobby teste',
@@ -40,7 +39,6 @@ describe('CreateDeveloper', () => {
       await createDeveloper.execute({
          name: 'Nome Teste',
          email: 'email@email.com',
-
          sex: 'M',
          age: 0,
          hobby: 'Hobby teste',
@@ -50,7 +48,6 @@ describe('CreateDeveloper', () => {
          createDeveloper.execute({
             name: 'Nome Teste',
             email: 'email@email.com',
-
             sex: 'M',
             age: 0,
             hobby: 'Hobby teste',
@@ -64,7 +61,6 @@ describe('CreateDeveloper', () => {
          createDeveloper.execute({
             name: 'Nome Teste',
             email: 'email@email.com',
-
             sex: 'A',
             age: 0,
             hobby: 'Hobby teste',

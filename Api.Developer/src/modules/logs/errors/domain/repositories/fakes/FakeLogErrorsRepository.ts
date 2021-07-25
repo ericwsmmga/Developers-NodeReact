@@ -1,5 +1,5 @@
-import { LogErrors } from '@modules/logs/errors/infra/typeorm/entities/logErrors';
 import { v4 as uuid } from 'uuid';
+import { LogErrors } from '../../../infra/typeorm/entities/logErrors';
 import { ICreateLogErrors } from '../../models/ICreateLogErrors';
 import { ILogErrorsRepository } from '../ILogErrorsRepository';
 
