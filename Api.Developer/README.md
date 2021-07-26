@@ -25,6 +25,7 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 git clone https://github.com/ericwsmmga/ProjetoNodeDev
 
 # Acesse a pasta do projeto no terminal/cmd
+cd ProjetoNodeDev
 cd Api.Developer
 
 # Rode o projeto
