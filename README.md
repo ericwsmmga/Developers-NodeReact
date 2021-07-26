@@ -65,8 +65,6 @@ cd front.developer
 
 ```bash
 # Instale os pacotes de Dependência do projeto
-
-
 yarn
 
 ```
