@@ -97,19 +97,28 @@ export default function CardDeveloper() {
 
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
+
     try {
-      await api.post("/developers", {
-        name: name,
-        email: email,
-        hobby: hobby,
-        sex: gender,
-        birthDate: selectedDate,
-      });
+      await api
+        .post("/developers", {
+          name: name,
+          email: email,
+          hobby: hobby,
+          sex: gender,
+          birthDate: selectedDate,
+        })
+        .then((response) => {
+          console.log(response);
+        });
       alert("Desenvolvedor Adicionado!");
       setSearch();
       handleClose();
     } catch (error) {
-      alert("E-mail já cadastrado !");
+      if (error.response) {
+        alert(error.response.data.message);
+      } else {
+        alert("Ocorreu um erro ao cadastrar o desenvolvedor ");
+      }
     }
   }
   async function handleUpdate(event: FormEvent) {
@@ -123,12 +132,18 @@ export default function CardDeveloper() {
           sex: gender,
           birthDate: selectedDate,
         })
-        .then(() => alert("Desenvolvedor Atualizado !"));
+        .then((response) => {
+          console.log(response);
+        });
       setIdDeveloper(0);
       setSearch();
       handleClose();
     } catch (error) {
-      alert("E-mail já cadastrado !");
+      if (error.response) {
+        alert(error.response.data.message);
+      } else {
+        alert("Ocorreu um erro ao atualizar o desenvolvedor ");
+      }
     }
   }
   async function DeleteDeveloper(id: number) {
