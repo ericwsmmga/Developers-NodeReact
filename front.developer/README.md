@@ -40,6 +40,12 @@ yarn
 
 yarn start
 ```
+
+<h2>O servidor inciará na porta:3000</h2> 
+<a href="http://localhost:3000">acesse a aplicação</a>
+
+<br/>
+<br/>
 <h2>Status</h2>
 <h4 align="center">
 	🚧  Node, Typescript, React 🚀 Em construção...  🚧
