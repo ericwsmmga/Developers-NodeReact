@@ -19,8 +19,6 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 
 <br/>
 
-<h2>Rodando o Back End</h2>
-
 ```bash
 # Clone este repositório
 git clone https://github.com/ericwsmmga/ProjetoNodeDev
