@@ -25,6 +25,7 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 git clone https://github.com/ericwsmmga/ProjetoNodeDev
 
 # Acesse a pasta do projeto no terminal/cmd
+cd ProjetoNodeDev
 cd Api.Developer
 
 # Rode o projeto
@@ -55,17 +56,27 @@ yarn jest
 
 <h2>Rodando o Front End</h2>
 
+```bash
 # Acesse a pasta do projeto no terminal/cmd
-
+cd ProjetoNodeDev
 cd front.developer
 
+```
+
+```bash
 # Instale os pacotes de Dependência do projeto
+
 
 yarn
 
+```
+
+```bash
 # Rode o projeto
 
 yarn start
+
+```
 
 <h2>Status</h2>
 <h4 align="center"> 
