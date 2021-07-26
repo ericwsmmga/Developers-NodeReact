@@ -26,8 +26,9 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 git clone https://github.com/ericwsmmga/ProjetoNodeDev
 ```
 <h2>Rodando o Front End</h2>
-```bash
+
 # Acesse a pasta do projeto no terminal/cmd
+```bash
 cd ProjetoNodeDev
 cd front.developer
 ```
