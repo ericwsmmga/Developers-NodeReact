@@ -58,7 +58,7 @@ yarn jest
 
 ```bash
 # Acesse a pasta do projeto no terminal/cmd
-cd ProjetoNodeDev
+cd ..
 cd front.developer
 
 ```
