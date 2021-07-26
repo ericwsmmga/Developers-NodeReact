@@ -71,7 +71,6 @@ yarn
 
 ```bash
 # Rode o projeto
-
 yarn start
 
 ```
